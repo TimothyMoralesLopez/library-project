@@ -1,1 +1,2 @@
 # library-project
+This is my Library Project. I am excited to be able to use this project to practice my JavaScript and get back into it. I think I am understanding objects and constructors so I am excited to begin this library project. 
