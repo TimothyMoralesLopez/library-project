@@ -9,5 +9,25 @@
 </head>
 <body>
     <div>My Library: </div>
+    <button class="add-button">Add Book</button>
+    <dialog>
+        <h4>Please Enter Book Details</h4>
+        <form>
+            <label for="book-title">Title:</label>
+            <input type="text" id="book-title" name="book-title" placeholder="Fahrenheit 451" required> <br>
+
+            <label for="book-author">Author:</label>
+            <input type="text" id="book-author" name="book-author" placeholder="Ray Bradbury" required> <br>
+
+            <label for="book-pages">Pages:</label>
+            <input type="number" id="book-pages" name="book-pages" placeholder="156" required> <br>
+
+            <label for="book-read">Read Status:</label>
+            <input type="text" id="book-read" name="book-read" placeholder="Read / Not Read" required> <br>
+
+            <button id="submit" type="submit">Add Book to Library</button> 
+        </form>
+        <button id="cancel">Cancel</button>
+    </dialog>
 </body>
 </html>

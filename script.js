@@ -1,8 +1,8 @@
-const sunBook = new Book("Sun", "T. L. Turris", 350, "Already read");
-const moonBook = new Book("Moon", "T. L. Turris", 350, "Already read");
-const starBook = new Book("Star", "T. L. Turris", 350, "Already read");
+const beginningBook = new Book("The Beginning", "Timothy Morales Lopez", 150, "Read");
+const middleBook = new Book("The Middle", "Timothy Morales Lopez", 250, "Read");
+const endBook = new Book("The End", "Timothy Morales Lopez", 350, "Read");
 
-const myLibrary = [sunBook, moonBook, starBook];
+const myLibrary = [beginningBook, middleBook, endBook];
 
 function Book(title, author, pages, read) {
   if (!new.target) {
@@ -21,11 +21,11 @@ Book.prototype.info = function() {
 };
 
 Book.prototype.toggleReadStatus = function() {
-    if (this.read == "Already read") {
-        this.read = "Not yet read";
+    if (this.read == "Read") {
+        this.read = "Not Read";
     }
-    if (this.read == "Not yet read") {
-        this.read = "Already read"; 
+    else if (this.read == "Not Read") {
+        this.read = "Read"; 
     }
 }
 
@@ -40,10 +40,6 @@ function displayBooks() {
         const newDiv = document.createElement("div");
         newDiv.classList.add("book-div");
         newDiv.id = myLibrary[i].id; 
-
-        let numberPara = document.createElement("p"); 
-        numberPara.textContent = `Book ${(i + 1)}`;
-        newDiv.appendChild(numberPara); 
 
         let titlePara = document.createElement("p"); 
         titlePara.textContent = `Title: ${myLibrary[i].title}`; 
@@ -67,7 +63,14 @@ function displayBooks() {
 
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete Book"; 
-        // deleteButton.addEventListener("click"); 
+        deleteButton.addEventListener("click", () => {
+            
+            myLibrary.splice(i, 1); 
+            clearDisplay();
+            displayBooks(); 
+
+        });
+
         newDiv.appendChild(deleteButton);
 
         const readButton = document.createElement("button"); 
@@ -78,10 +81,57 @@ function displayBooks() {
             readPara.textContent = `Read Status: ${myLibrary[i].read}`;
             
         }); 
+
         newDiv.appendChild(readButton);
 
         document.body.append(newDiv); 
     }
 }
+
+function clearDisplay() {
+
+    let booksList = document.querySelectorAll(".book-div");
+
+    for (let i = 0; i < booksList.length; i++) {
+
+        booksList[i].remove(); 
+
+    }
+
+}
+
+const bookDialog = document.querySelector("dialog"); 
+
+const cancelButton = document.querySelector("#cancel");
+cancelButton.addEventListener("click", () => {
+
+    bookDialog.close();
+
+});
+
+const addButton = document.querySelector(".add-button");
+addButton.addEventListener("click", () => {
+
+    bookDialog.showModal();     
+
+}); 
+
+const submitButton = document.querySelector("#submit");
+submitButton.addEventListener("click", (event) => {
+
+    const bookTitle = document.querySelector("#book-title");
+    const bookAuthor = document.querySelector("#book-author"); 
+    const bookPages = document.querySelector("#book-pages");
+    const bookRead = document.querySelector("#book-read"); 
+
+    addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.value);
+
+    clearDisplay(); 
+    displayBooks();
+    bookDialog.close(); 
+
+    event.preventDefault(); 
+
+}); 
 
 displayBooks(); 

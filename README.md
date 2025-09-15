@@ -1,2 +1,4 @@
 # library-project
 This is my Library Project. I am excited to be able to use this project to practice my JavaScript and get back into it. I think I am understanding objects and constructors so I am excited to begin this library project. 
+
+This is my Library Project - completed! This project was a little more involved than I had previously anticipated. However, I was able to get it done without too much trouble. My biggest obstacle was trying to add the delete button so that it would remove the selected book from both the visual display as well as the actual myLibrary array. Eventually, though I was able to get it working. I added some basic CSS just to make the project a little easier to read and navigate, but I could have definitely added more to get it to look a lot better. However, I am focusing right now on getting the JavaScript down and making sure the backend is working. I can always come back at a later point to add more CSS to the project. 
