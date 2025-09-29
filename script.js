@@ -1,9 +1,4 @@
-const beginningBook = new Book("The Beginning", "Timothy Morales Lopez", 150, "Read");
-const middleBook = new Book("The Middle", "Timothy Morales Lopez", 250, "Read");
-const endBook = new Book("The End", "Timothy Morales Lopez", 350, "Read");
-
-const myLibrary = [beginningBook, middleBook, endBook];
-
+/*
 function Book(title, author, pages, read) {
   if (!new.target) {
     throw Error("You must use the 'new' operator to call the constructor");
@@ -26,6 +21,36 @@ Book.prototype.toggleReadStatus = function() {
     }
     else if (this.read == "Not Read") {
         this.read = "Read"; 
+    }
+}
+
+function addBookToLibrary(bookTitle, bookAuthor, bookPages, bookRead) {
+    const addedBook = new Book(bookTitle, bookAuthor, bookPages, bookRead); 
+    myLibrary.push(addedBook); 
+}
+*/
+
+class Book {
+
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read; 
+        this.id = crypto.randomUUID(); 
+    }
+
+    info() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}, ID: ${this.id}`; 
+    }
+
+    toggleReadStatus() {
+        if (this.read == "Read") {
+            this.read = "Not Read";
+        }
+        else if (this.read == "Not Read") {
+            this.read = "Read"; 
+        }
     }
 }
 
@@ -133,5 +158,11 @@ submitButton.addEventListener("click", (event) => {
     event.preventDefault(); 
 
 }); 
+
+const beginningBook = new Book("The Beginning", "Timothy Morales Lopez", 150, "Read");
+const middleBook = new Book("The Middle", "Timothy Morales Lopez", 250, "Read");
+const endBook = new Book("The End", "Timothy Morales Lopez", 350, "Read");
+
+const myLibrary = [beginningBook, middleBook, endBook];
 
 displayBooks(); 
