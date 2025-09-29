@@ -23,11 +23,6 @@ Book.prototype.toggleReadStatus = function() {
         this.read = "Read"; 
     }
 }
-
-function addBookToLibrary(bookTitle, bookAuthor, bookPages, bookRead) {
-    const addedBook = new Book(bookTitle, bookAuthor, bookPages, bookRead); 
-    myLibrary.push(addedBook); 
-}
 */
 
 class Book {
